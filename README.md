@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hướng Dẫn Sử Dụng JTAG Debugger</title>
+    <title>Hướng Dẫn Multiboot từ ISO</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Times New Roman", Times, serif;
             margin: 20px;
         }
         h1, h2 {
@@ -22,56 +22,50 @@
     </style>
 </head>
 <body>
-    <h1>Hướng Dẫn Sử Dụng JTAG Debugger</h1>
-    <p>JTAG (Joint Test Action Group) debugger là một công cụ mạnh mẽ dùng để gỡ lỗi và lập trình các thiết bị nhúng. Dưới đây là các bước cơ bản để sử dụng JTAG debugger:</p>
+    <h1>Hướng Dẫn Multiboot từ ISO</h1>
+    <p>Multiboot là quá trình cài đặt và sử dụng nhiều hệ điều hành trên cùng một máy tính. Dưới đây là các bước cơ bản để cài đặt multiboot từ file ISO:</p>
 
-    <h2>1. Khởi Tạo JTAG Debugger</h2>
-    <p>Khởi tạo JTAG debugger để bắt đầu phiên làm việc.</p>
+    <h2>1. Chuẩn Bị</h2>
+    <p>Các bước cần thiết trước khi bắt đầu cài đặt multiboot:</p>
+    <ul>
+        <li>Tải các file ISO của các hệ điều hành bạn muốn cài đặt từ trang web chính thức.</li>
+        <li>Tạo ổ USB multiboot từ các file ISO bằng cách sử dụng công cụ như YUMI hoặc Ventoy.</li>
+        <li>Sao lưu dữ liệu quan trọng để tránh mất mát trong quá trình cài đặt.</li>
+    </ul>
+
+    <h2>2. Tạo USB Multiboot</h2>
+    <p>Sử dụng YUMI hoặc Ventoy để tạo ổ USB multiboot từ các file ISO:</p>
     <pre>
         <code>
-#include &lt;stdio.h&gt;
-
-// Giả lập một số thanh ghi và bộ nhớ thiết bị
-volatile int *register_address = (int *)0x40000000;
-volatile int memory[256];
-
-// Hàm khởi tạo JTAG debugger
-void init_jtag() {
-    printf("Initializing JTAG debugger...\n");
-    // Các lệnh khởi tạo cần thiết cho JTAG
-    // Ví dụ: cấu hình các chân GPIO cho JTAG, thiết lập tốc độ truyền dữ liệu, v.v.
-}
+            1. Tải và cài đặt YUMI hoặc Ventoy từ trang web chính thức.
+            2. Cắm USB vào máy tính.
+            3. Mở YUMI hoặc Ventoy và chọn ổ USB của bạn.
+            4. Chọn các file ISO của các hệ điều hành mà bạn muốn cài đặt.
+            5. Nhấp "Start" để tạo USB multiboot.
         </code>
     </pre>
 
-    <h2>2. Gỡ Lỗi Qua JTAG</h2>
-    <p>Thực hiện các lệnh gỡ lỗi qua JTAG.</p>
+    <h2>3. Cài Đặt Các Hệ Điều Hành</h2>
+    <p>Khởi động máy tính từ USB multiboot và cài đặt các hệ điều hành:</p>
     <pre>
         <code>
-void jtag_debug() {
-    printf("Starting JTAG debugging session...\n");
-    // Các lệnh gỡ lỗi cần thiết
-    // Ví dụ: đọc/ghi giá trị từ thanh ghi, kiểm tra trạng thái thiết bị, v.v.
-    *register_address = 0x12345678; // Ghi giá trị vào thanh ghi
-    int value = *register_address;  // Đọc giá trị từ thanh ghi
-    printf("Register value: 0x%X\n", value);
-}
+            1. Khởi động lại máy tính và vào BIOS/UEFI bằng cách nhấn phím tắt (thường là F2, F10, F12 hoặc Del).
+            2. Chọn USB multiboot từ menu Boot.
+            3. Theo các bước hướng dẫn trên màn hình để cài đặt từng hệ điều hành vào các phân vùng trống.
         </code>
     </pre>
 
-    <h2>3. Hàm Chính</h2>
-    <p>Gọi các hàm khởi tạo và gỡ lỗi để bắt đầu phiên làm việc với JTAG debugger.</p>
+    <h2>4. Cấu Hình Bootloader</h2>
+    <p>Đảm bảo tất cả các hệ điều hành có thể khởi động từ bootloader:</p>
     <pre>
         <code>
-int main() {
-    init_jtag();
-    jtag_debug();
-    return 0;
-}
+            1. Sau khi cài đặt các hệ điều hành, khởi động lại máy tính.
+            2. Nếu cần thiết, sử dụng công cụ như EasyBCD để cấu hình bootloader.
+            3. Thêm mục khởi động cho tất cả các hệ điều hành vào bootloader.
         </code>
     </pre>
 
-    <h2>Liên Kết Đến Hướng Dẫn Lập Trình JTAG</h2>
-    <p>Để xem hướng dẫn lập trình JTAG chi tiết, nhấn vào <a href="file:///C:/Users/tan09/Documents/Cach_Lap_Trinh_JTAG.html" target="_blank">đây</a>.</p>
+    <h2>Kết Luận</h2>
+    <p>Sau khi hoàn tất các bước trên, bạn sẽ có nhiều hệ điều hành cài đặt trên cùng một máy tính và có thể chọn hệ điều hành mong muốn khi khởi động.</p>
 </body>
 </html>
